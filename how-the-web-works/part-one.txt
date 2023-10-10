@@ -1,0 +1,26 @@
+- What is HTTP?
+Hyper text transfer protocol to initiate access to a server.
+
+- What is a URL?
+A web address to load data from a server.
+
+- What is DNS?
+
+
+- What is a query string?
+A phrase a user is searching for.
+
+- What are two HTTP verbs and how are they different?
+GET and POST, get retrieves data from the server, POST changes data in the server.
+
+- What is an HTTP request?
+
+
+- What is an HTTP response?
+
+
+- What is an HTTP header? Give a couple examples of request and response headers you have seen.
+
+
+- What are the processes that happen when you type “http://somesite.com/some/page.html” into a browser?
+Initiates the HTTP protocol, locates the IP address of the hostname and connects to the port then asks for the /some/page.html resourse file.
