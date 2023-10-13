@@ -6,10 +6,16 @@
     <title>Part Three: How the Web Works</title>
 </head>
 <body>
-    <form>
-        <input type="text" placeholder="Email"/>
-        <input type="text" placeholder="Password"/>
-        <button type="submit">Submit</button>
+    <h2>Get Method:</h2>
+    <form action="/Ubuntu/home/davidkhella/Springboard/Exercises/how-the-web-works/search.html" method="GET">
+        <input name="q" type="text" placeholder="Search query"/>
+        <button type="submit">SEARCH</button>
     </form>
+    <h2>Post Method:</h2>
+    <form action="/Ubuntu/home/davidkhella/Springboard/Exercises/how-the-web-works/add-comment.html" method="POST">
+        <input name="comment"/>
+        <button type="submit">SUBMIT</button>
+    </form>
+
 </body>
 </html>
