@@ -39,6 +39,7 @@ class StoryList {
     this.stories = stories;
   }
 
+  
   /** Generate a new StoryList. It:
    *
    *  - calls the API
@@ -73,8 +74,16 @@ class StoryList {
    * Returns the new Story instance
    */
 
-  async addStory( /* user, newStory */) {
+  async addStory( user, {title, author, url}) {
     // UNIMPLEMENTED: complete this function!
+    const response = await axios({
+      method: "POST",
+      url: `${BASE_URL}/stories`,
+      data: {story: {title, author, url}}
+    })
+
+    console.log(response)
+
   }
 }
 
