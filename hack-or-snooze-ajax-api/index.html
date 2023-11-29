@@ -37,6 +37,11 @@
   <div class="navbar-brand">
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
   </div>
+  <div class="main-nav-links hidden">
+    <a class="nav-link" href="#" id="nav-submit-story">submit</a>
+    <a class="nav-link" href="#" id="nav-favorites">favorites</a>
+    <a class="nav-link" href="#" id="nav-my-story">my story</a>
+  </div>
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
     <a class="nav-link" href="#" id="nav-user-profile"></a>
@@ -46,7 +51,22 @@
 
 <!-- area for stories (all stories, user stories, favorites) -->
 <section class="stories-container container">
-
+  <form action="" class="hidden" id="submit-form">
+    <div>
+      <label for="create-author">author</label>
+      <input id="create-author" required placeholder="author name">
+    </div>
+    <div>
+      <label for="create-title">title</label>
+      <input id="create-title" required placeholder="story title">
+    </div>
+    <div>
+      <label for="create-url">url</label>
+      <input id="create-url" required type="url" placeholder="story url">
+    </div>
+    <button type="submit">submit</button>
+    <hr>
+  </form>
   <!-- loading message (removed by JS after stories loaded) -->
   <div id="stories-loading-msg">Loading&hellip;</div>
 
@@ -95,6 +115,14 @@
     <button type="submit">create account</button>
   </form>
 </section>
+
+<!-- Story Form -->
+<form id="story-form" class="hidden">
+  <input>
+  <input>
+  <input>
+  <buttom type="submit">SUBMIT STORY</buttom>
+</form>
 
 <!-- Library JS & our JS -->
 <script src="https://unpkg.com/jquery"></script>
