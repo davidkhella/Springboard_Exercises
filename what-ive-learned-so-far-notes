@@ -38,14 +38,37 @@ async function apiFunction(){
 
 }
 
-//GET means retrieve data to display
-//POST means change data at the endpoint
-//token is a unique identifier for a user
-//always ask what is a functions input and expected output
+/* API notes:
+GET means retrieve data to display
+POST means change data at the endpoint
+token is a unique identifier for a user
+always ask what is a functions input and expected output
+*/
 
-//Python
+/*Python
+x = 'a variable'
 
+for str in x:
+    print(str)
 
+this is a list = ['string', 'string2']
+this is a dictionary = {'key': 'value'}
+this is a tuple = (val1, val2)
+there are built in functions like len() to identify the length of data type
+there are built in methods like slicing lst[start:stop:step], simple slicing lst[2:] removes first 2 indices 
+
+venv virtual environment to install python packages and not weigh down git repo
+clone git project, activate venv, install packages from requirements.txt
+open files with open("morse.txt", "r") also:
+
+file = open("filename.txt")
+
+for line in file:
+    print("LINE IS...", line)
+
+file.close()
+
+*/
 
 /*Post coding skills skills:
 - Be intentional about learning
@@ -56,3 +79,13 @@ async function apiFunction(){
 */
 
 
+/* Git Hub
+initialize git repo with git init
+
+use these commands to update files in git repo:
+    - git add . // stages all files that have changed
+    - git commit // checks in all changes
+    - git push // pushes changes to git repo
+
+add a .gitignore file in the directory where you don't want a specific file to be uploaded
+*/
