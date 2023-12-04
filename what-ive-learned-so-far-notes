@@ -1,0 +1,58 @@
+// What I’ve learned so far:
+// JavaScript:
+// How to loop through an array:
+const array = ['string', 'string2']
+for (let index in array) {
+    return index;
+}
+
+//Function with arguments:
+function myFunction(a,b) {
+    return a + b;
+}
+
+//Callback functions:
+function myFunction1(){
+    console.log('I am: myFunction1');
+}
+
+function myFunction2(a){
+    if (a >= 1) {
+        myFunction1();
+    }
+}
+
+//functions in Classes are known as methods
+
+//jQuery
+//library must be installed in the html file
+$('button').on('click', functionName);
+
+//Populating the UI with api data
+async function apiFunction(){
+    const response = await axios.get('URL');
+    const someData = response.data.somedata;
+    const $heading = $('#heading');
+
+    return $heading.append(`${someData}`);
+
+}
+
+//GET means retrieve data to display
+//POST means change data at the endpoint
+//token is a unique identifier for a user
+//always ask what is a functions input and expected output
+
+//Python
+
+
+
+/*Post coding skills skills:
+- Be intentional about learning
+- Capstones can be based on existing apps but identifies and solves a problem that was not solved before so it stands out and is not an exact replica
+- Learn the technical skills but the problem solving skills are more important
+- I am learning the alphabet but cannot create sentense yet
+- Interviews are looking for mental readiness, exceptional problem solving engineers
+*/
+
+
