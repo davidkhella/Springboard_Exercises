@@ -27,3 +27,18 @@
 #     t.width(x/100 + 1)
 #     t.forward(x)
 #     t.left(59)
+
+
+from math import sqrt
+
+class Triangle:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    @classmethod
+    def random(cls):
+        return cls(234,54)
+
+    def get_hypotenuse(self):
+        return sqrt(self.a ** 2 + self.b ** 2)

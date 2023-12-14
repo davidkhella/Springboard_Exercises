@@ -60,13 +60,13 @@ there are built in methods like slicing lst[start:stop:step], simple slicing lst
 venv virtual environment to install python packages and not weigh down git repo
 clone git project, activate venv, install packages from requirements.txt
 open files with open("morse.txt", "r") also:
-
-file = open("filename.txt")
+"file = open("filename.txt")
 
 for line in file:
     print("LINE IS...", line)
-
-file.close()
+file.seek(0)
+all_text = file.read()
+file.close()"
 
 */
 
