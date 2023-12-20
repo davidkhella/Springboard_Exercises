@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title%}Lucky Page{% endblock %}
+
+{% block content %}
+    <h1>Your lucky number is {{lucky_num}}</h1>
+    <p>{{msg}}</p>
+    {% if lucky_num == 3 %}
+        <h2>I love that shit!</h2>
+        <iframe src="https://giphy.com/embed/xT5LMHxhOfscxPfIfm" width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/season-17-the-simpsons-17x10-xT5LMHxhOfscxPfIfm">via GIPHY</a></p>
+    {% else %}
+        <h2>I don't like that shit</h2>
+        <iframe src="https://giphy.com/embed/W0c3xcZ3F1d0EYYb0f" width="480" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/Friends-season-2-friends-tv-the-one-where-eddie-moves-in-W0c3xcZ3F1d0EYYb0f">via GIPHY</a></p>
+    {% endif %}
+{% endblock %}

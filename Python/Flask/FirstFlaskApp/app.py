@@ -1,45 +1,33 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
+from flask_debugtoolbar import DebugToolbarExtension
+from random import randint, choice, sample
 
 app = Flask(__name__)
 
-@app.route('/')
-def say_hello():
-    html = """
-    <html>
-        <body>
-            <h1>HOMEPAGE</h1>
-            <p>Welcome to my simple app powered by Flask.</p>
-            <a href="/hello">Go to HELLO page</a>
-        </body>
-    </html>
-    """
-    return html
+app.config['SECRET_KEY'] = 'diamondgirl2021'
 
-@app.route('/hello')
+debug = DebugToolbarExtension(app)
+
+@app.route('/')
 def hello():
-    html = """
-    <html>
-        <body>
-            <h1>HELLO!</h1>
-            <p>This is fun!</p>
-            <a href="/bye">Go to GOODBYE page</a>
-        </body>
-    </html>
-    """
-    return html
+    return render_template('home.html')
+
+# @app.route('/hello')
+# def hello():
+#     html = """
+#     <html>
+#         <body>
+#             <h1>HELLO!</h1>
+#             <p>This is fun!</p>
+#             <a href="/bye">Go to GOODBYE page</a>
+#         </body>
+#     </html>
+#     """
+#     return html
 
 @app.route('/bye')
 def bye():
-    html = """
-    <html>
-        <body>
-            <h1>GOODBYE!</h1>
-            <p>Sad to see you go, let's do it again?</p>
-            <a href="/">Go to HOMEPAGE page</a>
-        </body>
-    </html>
-    """
-    return html
+    return render_template('bye.html')
 
 @app.route('/search')
 def search():
@@ -90,3 +78,42 @@ POSTS = {
 def find_post(id):
     post = POSTS.get(id, "Post not found")
     return f"<p>{post}"
+
+
+@app.route('/hello')
+def say_hello():
+    """Returns hello page"""
+    return render_template('hello.html')
+
+@app.route('/lucky')
+def lucky_num():
+    num = randint(1, 10)
+    return render_template('lucky.html', lucky_num=num, msg="You are so lucky!")
+
+@app.route('/form')
+def show_form():
+    return render_template('form.html')
+
+COMPLIMENTS = ['cool', 'clever', 'tenacious', 'awesome', 'Pythonic']
+
+@app.route('/greet')
+def get_greeting():
+    username = request.args['username']
+    nice_thing = choice(COMPLIMENTS)
+    return render_template('greet.html', username=username, compliment=nice_thing)
+
+@app.route('/spell/<word>')
+def spell_word(word):
+    caps_word = word.upper()
+    return render_template('spell_word.html', word=caps_word)
+
+@app.route('/form-2')
+def show_form2():
+    return render_template('form-2.html')
+
+@app.route('/greet-2')
+def get_greeting2():
+    username = request.args['username']
+    wants = request.args.get('wants_compliments')
+    nice_things = sample(COMPLIMENTS, 3)
+    return render_template('greet-2.html', username=username, wants_compliments=wants, compliments=nice_things)
