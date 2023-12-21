@@ -7,19 +7,11 @@
 </head>
 <body>
     <h1>Madlibs</h1>
-    <form>
-
-        {% for %}
-        loop through questions
-        adds text input fields
-        
-
-        s = Story(["noun", "verb"], "I love to {verb} a good {noun}.")
-        ans = {"verb": "eat", "noun": "mango"}
-
-        submits data to /story route and initiates s.generate(ans)
-        
-        {% endform %}
+    <form action="/story">
+        {% for prompt in prompts%}
+            <p>{{ prompt }} <input type="text" name="{{ prompt }}"></p>
+        {% endfor %}
+       <button>Submit</button>
     </form>
     
 </body>
