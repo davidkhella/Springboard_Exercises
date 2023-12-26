@@ -1,0 +1,11 @@
+{% extends 'base.html' %} 
+{% block title%}Question {{ question_id }}{% endblock %} 
+{% block content %}
+<h1>{{ question }}</h1>
+<p>{{ instructions }}</p>
+<form action="/answer" method="POST">
+    <input type="text" name="title" placeholder="add movie">
+    <button>Submit</button>
+</form>
+{% endblock %}
+    
