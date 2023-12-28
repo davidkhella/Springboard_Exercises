@@ -12,30 +12,49 @@ debug = DebugToolbarExtension(app)
 responses = []
 
 @app.route('/')
-def start_survey():
+def survey_home():
     """Directs to survey page"""
     title = satisfaction_survey.title
     instructions = satisfaction_survey.instructions
     return render_template('survey.html', title=title, instructions=instructions)
 
-@app.route('/questions/<question_id>')
+@app.route('/begin', methods=['POST'])
+def start_survey():
+
+    return redirect('/questions/0')
+
+@app.route('/questions/<int:question_id>')
 def questions(question_id):
-    """Generates a new question id based on question index and addes it to url"""
-    question = satisfaction_survey.questions[question_id].question   
-    satisfaction_survey.questions[question_id].choices
-    satisfaction_survey.questions[question_id].allow_text
+    """Generates questions for the survey"""
+    if(responses is None):
+        return redirect('/')
+    
+    if(len(responses) == len(satisfaction_survey.questions)):
+        """Completed the survey"""
+        return redirect('/thank-you')
+    
+    if(len(responses) != question_id):
+        """Cannot skip questions"""
+        flash(f'Invalid question id: {question_id}.')
+        return redirect(f'/questions/{len(responses)}')
 
-    return render_template('question.html', question=question)
+    question = satisfaction_survey.questions[question_id]
 
-@app.route('/answer')
+    return render_template('question.html', question_num=question_id, question=question)
+
+@app.route('/answer', methods=['POST'])
 def answer():
-    answer = request.form['answer']
+    choice = request.form['answer']
     # Add to pretend DB
-    responses.append(answer)
-    flash('Added your answer', 'success')
+    responses.append(choice)
 
-    return redirect('/question/<question_id>')
+    if(len(responses) == len(satisfaction_survey.questions)):
+        return redirect('/thank-you')
+    else:
+        return redirect(f'/questions/{len(responses)}')
 
 @app.route('/thank-you')
 def thank_you():
     """Sends user to thank you page when the length of the questions are answered"""
+    return render_template('thank-you.html')
+
