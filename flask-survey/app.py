@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, flash, jsonify
+from flask import Flask, request, render_template, redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from surveys import satisfaction_survey, personality_quiz, surveys
 
@@ -9,7 +9,6 @@ app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 debug = DebugToolbarExtension(app)
 
-responses = []
 
 @app.route('/')
 def survey_home():
@@ -20,12 +19,13 @@ def survey_home():
 
 @app.route('/begin', methods=['POST'])
 def start_survey():
-
+    session['responses'] = []
     return redirect('/questions/0')
 
 @app.route('/questions/<int:question_id>')
 def questions(question_id):
     """Generates questions for the survey"""
+    responses = session.get('responses')
     if(responses is None):
         return redirect('/')
     
@@ -44,10 +44,11 @@ def questions(question_id):
 
 @app.route('/answer', methods=['POST'])
 def answer():
+    responses = session.get('responses', [])
     choice = request.form['answer']
     # Add to pretend DB
     responses.append(choice)
-
+    session['responses'] = responses
     if(len(responses) == len(satisfaction_survey.questions)):
         return redirect('/thank-you')
     else:
